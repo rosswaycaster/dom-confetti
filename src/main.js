@@ -56,8 +56,8 @@ function updateFetti(fetti, progress, decay) {
   /* eslint-enable */
 }
 
-function animate(root, fettis, decay) {
-  const totalTicks = 200;
+function animate(root, fettis, decay, ticks) {
+  const totalTicks = ticks;
   let tick = 0;
 
   function update() {
@@ -80,7 +80,8 @@ export function confetti(root, {
     spread = 45,
     startVelocity = 45,
     elementCount = 50,
-    colors = defaultColors
+    colors = defaultColors,
+    ticks = 200
   } = {}) {
   const elements = createElements(root, elementCount, colors);
   const fettis = elements.map((element) => ({
@@ -88,5 +89,5 @@ export function confetti(root, {
     physics: randomPhysics(angle, spread, startVelocity)
   }));
 
-  animate(root, fettis, decay);
+  animate(root, fettis, decay, ticks);
 }
